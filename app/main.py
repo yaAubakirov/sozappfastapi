@@ -3,7 +3,7 @@ from . import model
 from .database import engine, get_db
 from .routers import users, words, auth
 
-model.Base.metadata.create_all(bind=engine)
+# model.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
