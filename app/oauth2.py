@@ -1,4 +1,4 @@
-from jose import JWSError, jwt
+from jose import jwt, JWTError
 from datetime import datetime, timedelta
 from . import schema, database, model
 from fastapi import Depends, status, HTTPException
@@ -28,8 +28,8 @@ def verify_access_token(token: str, credentials_exception):
         if not id:
             raise credentials_exception
         token_data = schema.TokenData(id=id)
-    except JWSError:
-        credentials_exception
+    except JWTError:
+        raise credentials_exception
 
     return token_data
 
